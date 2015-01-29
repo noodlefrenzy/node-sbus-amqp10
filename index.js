@@ -59,7 +59,10 @@ SbusAdapter.prototype.eventHubReceive = function(uri, offset, cb) {
         this.eventHubClient = new AMQPClient(AMQPClient.policies.EventHubPolicy);
     }
 
-    this.eventHubClient.receive(uri, filter, cb);
+    var partitionId = uri.substring(uri.lastIndexOf('/') + 1);
+    this.eventHubClient.receive(uri, filter, function(err, payload, annotations) {
+        cb(err, partitionId, payload, annotations.value);
+    });
 };
 
 SbusAdapter.prototype.disconnect = function(cb) {
