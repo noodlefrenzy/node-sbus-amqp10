@@ -17,7 +17,7 @@
     "should": "^4.0.4"
   },
   "scripts": {
-    "pretest": "jshint lib",
+    "pretest": "jshint index.js",
     "test": "mocha test"
   },
   "author": {
