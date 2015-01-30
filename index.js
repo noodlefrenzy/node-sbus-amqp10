@@ -66,7 +66,10 @@ SbusAdapter.prototype.eventHubReceive = function(uri, offset, cb) {
 };
 
 SbusAdapter.prototype.disconnect = function(cb) {
+};
 
+SbusAdapter.EventHubClient = function(serviceBusNamespace, eventHubName, sasName, sasKey) {
+    return Sbus.eventhub.EventHub.Instance(serviceBusNamespace, eventHubName, sasName, sasKey, new SbusAdapter());
 };
 
 module.exports = SbusAdapter;
