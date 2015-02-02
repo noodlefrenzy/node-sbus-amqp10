@@ -66,6 +66,20 @@ SbusAdapter.prototype.eventHubReceive = function(uri, offset, cb) {
 };
 
 SbusAdapter.prototype.disconnect = function(cb) {
+    var self = this;
+    if (this.eventHubClient) {
+        this.eventHubClient.disconnect(function () {
+            self.eventHubClient = null;
+            self.disconnect(cb); // Teardown service bus if connected.
+        });
+    } else if (this.serviceBusClient) {
+        this.serviceBusClient.disconnect(function() {
+            self.serviceBusClient = null;
+            cb();
+        })
+    } else {
+        cb();
+    }
 };
 
 SbusAdapter.EventHubClient = function(serviceBusNamespace, eventHubName, sasName, sasKey) {

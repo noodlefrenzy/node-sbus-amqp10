@@ -37,7 +37,9 @@ if (process.argv.length < 3) {
                 console.log(payload);
                 if (payload.DataValue === msgVal) {
                     console.log('Exiting after receiving expected value ' + msgVal);
-                    process.exit(1);
+                    processor.teardown(function() {
+                        process.exit(1);
+                    });
                 }
             }
         }, function(init_err) {
