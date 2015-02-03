@@ -76,7 +76,7 @@ SbusAdapter.prototype.disconnect = function(cb) {
         this.serviceBusClient.disconnect(function() {
             self.serviceBusClient = null;
             cb();
-        })
+        });
     } else {
         cb();
     }
