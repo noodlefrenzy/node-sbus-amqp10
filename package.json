@@ -1,15 +1,15 @@
 {
   "name": "node-sbus-amqp10",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Adapter for node-sbus module to use node-amqp-1-0 module for all AMQP calls.  node-amqp-1-0 has no native code.",
   "main": "index.js",
   "engines": {
     "node": ">= 0.8"
   },
   "dependencies": {
-    "node-amqp-1-0": "noodlefrenzy/node-amqp-1-0",
-    "node-amqp-encoder": "noodlefrenzy/node-amqp-encoder",
-    "node-sbus": "noodlefrenzy/node-sbus"
+    "node-amqp-1-0": "^0.0.4",
+    "node-amqp-encoder": "^0.0.2",
+    "node-sbus": "^0.0.4"
   },
   "devDependencies": {
     "jshint": "^2.5.11",
