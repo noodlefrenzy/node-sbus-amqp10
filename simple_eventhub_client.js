@@ -49,7 +49,11 @@ if (process.argv.length < 3) {
                 process.exit(1);
             } else {
                 processor.receive();
-                processor.send({ "DataString": "From node-sbus-amqp10", "DataValue": msgVal }, "PK2", function(tx_err) {
+                var payloadToSend = { "DataString": "From node-sbus-amqp10", "DataValue": msgVal };
+                //for (var idx=0; idx < 900; ++idx) {
+                //    payloadToSend["K" + idx] = idx;
+                //}
+                processor.send(payloadToSend, "PK2", function(tx_err) {
                     if (tx_err) {
                         console.log('Error Sending: ');
                         console.log(tx_err);
