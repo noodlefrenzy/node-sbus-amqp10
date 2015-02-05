@@ -17,8 +17,8 @@ function generateOffsetFilter(offset) {
 }
 
 function SbusAdapter() {
-    this.eventHubClient = null;
-    this.serviceBusClient = null;
+    this.eventHubClient = new AMQPClient(AMQPClient.policies.EventHubPolicy);
+    this.serviceBusClient = new AMQPClient(AMQPClient.policies.ServiceBusQueuePolicy);
 }
 
 SbusAdapter.prototype.send = function(uri, payload, cb) {
@@ -40,10 +40,6 @@ SbusAdapter.prototype.eventHubSend = function(uri, payload, partitionKey, cb){
         annotations = { 'x-opt-partition-key': partitionKey };
     }
 
-    if (!this.eventHubClient) {
-        this.eventHubClient = new AMQPClient(AMQPClient.policies.EventHubPolicy);
-    }
-
     this.eventHubClient.send(payload, uri, annotations, cb);
 };
 
@@ -54,10 +50,6 @@ SbusAdapter.prototype.eventHubReceive = function(uri, offset, cb) {
     }
 
     var filter = generateOffsetFilter(offset);
-
-    if (!this.eventHubClient) {
-        this.eventHubClient = new AMQPClient(AMQPClient.policies.EventHubPolicy);
-    }
 
     var partitionId = uri.substring(uri.lastIndexOf('/') + 1);
     this.eventHubClient.receive(uri, filter, function(err, payload, annotations) {
