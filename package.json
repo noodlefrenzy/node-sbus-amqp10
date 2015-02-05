@@ -7,7 +7,7 @@
     "node": ">= 0.8"
   },
   "dependencies": {
-    "node-amqp-1-0": "^0.0.6",
+    "node-amqp-1-0": "^0.0.7",
     "node-amqp-encoder": "^0.0.2",
     "node-sbus": "^0.0.4"
   },
