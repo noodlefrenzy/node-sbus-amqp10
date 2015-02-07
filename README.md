@@ -44,30 +44,19 @@ To receive messages from all partitions of `myEventHub` in `myServiceBus`, and s
       }
     });
 
-For sending messages, it's equally easy:
+For sending messages, it's even easier:
 
     // Set up variables as above
 
     var Sbus = require('node-sbus-amqp10');
     var hub = Sbus.EventHubClient(serviceBus, eventHubName, sasKeyName, sasKey);
-    hub.getEventProcessor(consumerGroup, function (conn_err, processor) {
-      if (conn_err) { ... do something ... } else {
-        processor.set_storage(tableStorageName, tableStorageKey);
-        processor.init(function () { ... }, function (init_err) {
-          if (init_err) { ... do something ... } else {
-            processor.send({ 'myJSON': 'payload' }, 'partitionKey', function (tx_err) {
-              if (tx_err) { ... do something ... }
-            });
-          }
-        });
-      }
-    });
+    hub.send({ 'myJSON': 'payload' }, 'partitionKey', function(tx_err) { });
 
 Known Issues
 ============
 
 Please see `node-amqp-1-0` ([GitHub](https://github.com/noodlefrenzy/node-amqp-1-0) | [NPM](https://www.npmjs.com/package/node-amqp-1-0)) for open issues with the underlying AMQP library, and
-`node-sbus` ([GitHub](https://github.com/noodlefrenzy/node-sbus) (will change to jmspring) | NPM (TBD)) for issues with the ServiceBus/EventHub wrapper.  The issues for this adapter
+`node-sbus` ([GitHub](https://github.com/noodlefrenzy/node-sbus) (will change to jmspring) | [NPM](https://www.npmjs.com/package/node-sbus)) for issues with the ServiceBus/EventHub wrapper.  The issues for this adapter
 will be managed in its [GitHub issues page](https://github.com/noodlefrenzy/node-sbus-amqp10/issues), but the primary issue at this time is:
 
 * No support for ServiceBus queues and topics

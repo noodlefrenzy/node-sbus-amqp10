@@ -27,38 +27,21 @@ function sendMessages(settings, args) {
         settings.SASKey
     );
 
-    hub.getEventProcessor(group, function(err, processor) {
-        if(err) {
-            console.log("Unable to allocate event processor. Error:", err);
-            process.exit(1);
-        }
+    for (var i = 0; i < count; ++i) {
+        var value = Math.floor(Math.random() * 10000).toString();
+        var partitionKey = Math.floor(Math.random() * 10000).toString();
 
-        processor.set_storage(settings.tableStoreName, settings.tableStoreKey);
-        processor.init(function () {}, function(err) {
-            if(err) {
-                console.log("Unable to init. Error:", err);
-                process.exit(1);
+        var payloadToSend = {
+            "DataString": "From node-sbus-amqp10",
+            "DataValue": value
+        };
+        hub.send(payloadToSend, partitionKey, function (err) {
+            if (err) {
+                console.log('Error Sending: ', err);
+            } else {
+                console.log('Sent messages:', ++countSent)
             }
-
-            for (var i = 0; i < count; ++i) {
-                var value = Math.floor(Math.random() * 10000).toString();
-                var partitionKey = Math.floor(Math.random() * 10000).toString();
-
-                var payloadToSend = {
-                    "DataString": "From node-sbus-amqp10",
-                    "DataValue": value
-                };
-
-                processor.send(payloadToSend, partitionKey, function (err) {
-                    if (err) {
-                        console.log('Error Sending: ', err);
-                    } else {
-                        console.log('Sent messages:', ++countSent)
-                    }
-                })
-            }
-
         });
-    });
+    }
 }
 
