@@ -1,4 +1,4 @@
-var AMQPClient      = require('node-amqp-1-0'),
+var AMQPClient      = require('amqp10'),
     Builder         = require('node-amqp-encoder').Builder,
     Sbus            = require('node-sbus');
 

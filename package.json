@@ -1,13 +1,13 @@
 {
   "name": "node-sbus-amqp10",
-  "version": "0.0.15",
-  "description": "Adapter for node-sbus module to use node-amqp-1-0 module for all AMQP calls.  node-amqp-1-0 has no native code.",
+  "version": "0.0.16",
+  "description": "Adapter for node-sbus module to use amqp10 module for all AMQP calls (amqp10 has no native code).",
   "main": "index.js",
   "engines": {
     "node": ">= 0.8"
   },
   "dependencies": {
-    "node-amqp-1-0": "^0.0.15",
+    "amqp10": "^1.0.0",
     "node-amqp-encoder": "^0.0.2",
     "node-sbus": "^0.0.5"
   },
@@ -26,12 +26,11 @@
     "url": "http://www.mikelanzetta.com"
   },
   "homepage": "https://github.com/noodlefrenzy/node-sbus-amqp10",
-  "licenses": [
-    "MIT"
-  ],
+  "license": "MIT",
   "keywords": [
     "amqp",
     "amqp 1.0",
+    "amqp10",
     "amqp-1-0",
     "messaging",
     "queues",

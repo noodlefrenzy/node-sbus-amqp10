@@ -1,4 +1,4 @@
-var Sbus = require('./index');
+var Sbus = require('../index');
 
 function assertOptions(options, args) {
     var failed = [];

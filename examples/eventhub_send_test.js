@@ -1,4 +1,4 @@
-var Sbus = require('./index');
+var Sbus = require('./../index');
 
 main(process.argv.slice(2));
 
