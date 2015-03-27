@@ -7,9 +7,9 @@
     "node": ">= 0.8"
   },
   "dependencies": {
-    "amqp10": "^1.0.0",
+    "amqp10": "^1.0.1",
     "node-amqp-encoder": "^0.0.2",
-    "node-sbus": "^0.0.5"
+    "sbus": "^0.1.0"
   },
   "devDependencies": {
     "jshint": "^2.5.11",
