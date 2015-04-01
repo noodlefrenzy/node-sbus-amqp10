@@ -1,6 +1,6 @@
 var AMQPClient      = require('amqp10'),
     Builder         = require('node-amqp-encoder').Builder,
-    Sbus            = require('node-sbus');
+    Sbus            = require('sbus');
 
 
 function generateOffsetFilter(offset) {

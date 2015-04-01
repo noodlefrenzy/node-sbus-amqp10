@@ -1,4 +1,6 @@
-var Sbus = require('./../index');
+var Sbus = require('../index');
+// Switch to this line if you pull out this example and use it for your own codebase.
+//var Sbus = require('sbus-amqp10');
 
 main(process.argv.slice(2));
 
