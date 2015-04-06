@@ -1,13 +1,13 @@
 {
   "name": "sbus-amqp10",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Adapter for node-sbus module to use amqp10 module for all AMQP calls (amqp10 has no native code).",
   "main": "index.js",
   "engines": {
     "node": ">= 0.8"
   },
   "dependencies": {
-    "amqp10": "^1.0.1",
+    "amqp10": "^1.0.2",
     "node-amqp-encoder": "^0.0.2",
     "sbus": "^0.1.0"
   },
